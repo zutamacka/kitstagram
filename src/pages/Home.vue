@@ -1,0 +1,63 @@
+<template>
+  <q-page class="constrain q-pa-md">
+    <div class="row q-col-gutter-md">
+      <div class="col-12 col-sm-8">
+        <single-post v-for="post in posts" :key="post.id" :post="post" />
+      </div>
+      <div class="col-4 large-screen-only">
+        <q-item class="fixed">
+          <q-item-section avatar>
+            <q-avatar size="48px">
+              <img src="~assets/MaineCoon.png" />
+            </q-avatar>
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="text-bold">Floofster</q-item-label>
+            <q-item-label caption>@Kittybox</q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
+    </div>
+  </q-page>
+</template>
+
+<script>
+import { defineComponent } from 'vue'
+import { date } from 'quasar'
+import SinglePost from '../components/SinglePost.vue'
+import { fireDB } from '../boot/firebase.js'
+export default defineComponent({
+  components: { SinglePost },
+  name: 'PageHome',
+  data() {
+    return {
+      posts: [],
+    }
+  },
+  methods: {
+    niceDate(value) {
+      return date.formatDate(value, 'MMMM DD h:mmA')
+    },
+  },
+  created() {
+    console.log('floo')
+    fireDB.collection('posts').onSnapshot((snapshotChange) => {
+      this.posts = []
+      snapshotChange.forEach((doc) => {
+        this.posts.push({
+          id: doc.id,
+          caption: doc.data().caption,
+          location: doc.data().location,
+          imageUrl: doc.data().imageUrl,
+        })
+      })
+    })
+  },
+})
+</script>
+<style lang="sass">
+.card-post
+  .q-img
+    min-height:200px
+</style>

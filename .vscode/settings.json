@@ -1,0 +1,11 @@
+{
+  
+  "vetur.experimental.templateInterpolationService": true,
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+  // bracket pairs 2
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  
+  // bracket pairs 2
+
+}

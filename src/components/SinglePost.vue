@@ -63,17 +63,22 @@ export default defineComponent({
     deletePost() {
       console.log('floo', this.niceDate(1645895709399))
       console.log(this.post.id)
-      return
       if (window.confirm('Do you really want to delete?')) {
         fireDB
           .collection('posts')
           .doc(this.post.id)
           .delete()
           .then(() => {
-            console.log('Post deleted!')
+            this.$q.dialog({
+              title: 'Succes!',
+              message: 'Post Deleted.',
+            })
           })
           .catch((error) => {
-            console.error(error)
+            this.$q.dialog({
+              title: 'Error',
+              message: 'Delete Failed.',
+            })
           })
       }
     },

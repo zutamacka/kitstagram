@@ -202,7 +202,6 @@ export default defineComponent({
     disableCamera() {
       this.$refs.userVideo.srcObject.getVideoTracks().forEach((track) => {
         track.stop()
-        console.log('disabling camera')
       })
     },
     // gets the location @click

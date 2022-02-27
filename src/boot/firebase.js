@@ -9,16 +9,7 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyBSyTJGDeaGIu8LxeX2XwR97oGvmfGJG6g',
-  authDomain: 'kitstagram-cefdc.firebaseapp.com',
-  databaseURL:
-    'https://kitstagram-cefdc-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'kitstagram-cefdc',
-  storageBucket: 'kitstagram-cefdc.appspot.com',
-  messagingSenderId: '1003980580041',
-  appId: '1:1003980580041:web:60fdf3c90a6d3e8d139918',
-}
+const firebaseConfig = {}
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 export const fireDB = firebaseApp.firestore()
 // Initialize Firebase

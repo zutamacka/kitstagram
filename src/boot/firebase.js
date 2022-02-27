@@ -7,9 +7,9 @@
 // import { getFirestore } from 'firebase/firestore'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
+import { firebaseConfig } from './firebase-cred.js'
 
 // Your web app's Firebase configuration
-const firebaseConfig = {}
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 export const fireDB = firebaseApp.firestore()
 // Initialize Firebase
